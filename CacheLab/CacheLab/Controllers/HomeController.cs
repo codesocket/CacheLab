@@ -12,6 +12,11 @@ namespace CacheLab.Controllers
         {
             ViewBag.Title = "Home Page";
 
+            Response.Cache.SetCacheability(HttpCacheability.Public);
+            Response.Cache.SetMaxAge(TimeSpan.FromDays(10));
+            Response.Cache.SetSlidingExpiration(true);
+            Response.Headers.Remove("Vary");
+
             return View();
         }
     }
